@@ -10,16 +10,13 @@ import UIKit
 
 class TodoListViewControllerTableViewController: UITableViewController {
     
-    let itemsArray = ["Find Mike", "Buy Eggos", "Destroy the World"]
+    var itemsArray = ["Find Mike", "Buy Eggos", "Destroy the World"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
 //         self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -95,5 +92,29 @@ class TodoListViewControllerTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
+    // MARK: - Add New Items
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        var alertTextField: UITextField?
+        
+        let alert = UIAlertController(title: "New Item", message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let newItemAction = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            self.itemsArray.append(alertTextField!.text!)
+            self.tableView.reloadData()
+        }
+        
+        
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Your New Item..."
+            alertTextField = textfield
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(newItemAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
