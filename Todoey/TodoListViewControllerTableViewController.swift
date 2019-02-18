@@ -103,7 +103,7 @@ class TodoListViewControllerTableViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let newItemAction = UIAlertAction(title: "Add Item", style: .default) { (action) in
             self.itemsArray.append(alertTextField!.text!)
-            self.tableView.reloadData()
+            self.tableView.insertRows(at: [IndexPath(row: self.itemsArray.count - 1, section: 0)], with: UITableView.RowAnimation.right)
         }
         
         
