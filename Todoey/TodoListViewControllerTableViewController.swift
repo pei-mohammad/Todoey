@@ -10,20 +10,17 @@ import UIKit
 
 class TodoListViewControllerTableViewController: UITableViewController {
     
-    var itemsArray: [String]!
+    let TODOLIST_ARRAY_KEY = "TodoListArray"
+    
+    var itemsArray =  [Item]()
     let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
-            itemsArray = items
-        } else {
-            itemsArray = [String]()
-        }
-
-        // Uncomment the following line to preserve selection between presentations
-//         self.clearsSelectionOnViewWillAppear = false
+        self.tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 1)
+        self.tableView.tableFooterView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
+        
     }
 
     // MARK: - Table view data source
@@ -36,8 +33,12 @@ class TodoListViewControllerTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoItemCell", for: indexPath)
+        
+        let item = itemsArray[indexPath.row]
 
-        cell.textLabel?.text = itemsArray[indexPath.row]
+        cell.textLabel?.text = item.title
+        
+        cell.accessoryType = item.done ? .checkmark : .none
 
         return cell
     }
@@ -45,17 +46,11 @@ class TodoListViewControllerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(itemsArray[indexPath.row])
         
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        }
+        itemsArray[indexPath.row].done = !itemsArray[indexPath.row].done
+
+        tableView.reloadData()
         
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
 
@@ -114,9 +109,12 @@ class TodoListViewControllerTableViewController: UITableViewController {
         let alert = UIAlertController(title: "New Item", message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let newItemAction = UIAlertAction(title: "Add Item", style: .default) { (action) in
-            self.itemsArray.append(alertTextField!.text!)
-            self.defaults.set(self.itemsArray, forKey: "TodoListArray")
-            self.tableView.insertRows(at: [IndexPath(row: self.itemsArray.count - 1, section: 0)], with: UITableView.RowAnimation.left)
+            let item = Item()
+            item.title = (alertTextField?.text)!
+            self.itemsArray.append(item)
+            let indexPath = IndexPath(row: self.itemsArray.count - 1, section: 0)
+            self.tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.left)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
         
         

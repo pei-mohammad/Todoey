@@ -13,6 +13,7 @@
 		8E3A5C0B221B66F0006BF191 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3A5C09221B66F0006BF191 /* LaunchScreen.storyboard */; };
 		8E3A5C13221B67FF006BF191 /* TodoListViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3A5C12221B67FF006BF191 /* TodoListViewControllerTableViewController.swift */; };
 		8E3A5C19221B7D5D006BF191 /* TableViewForTodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3A5C18221B7D5D006BF191 /* TableViewForTodoList.swift */; };
+		8E3A5C1B221B9C75006BF191 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3A5C1A221B9C75006BF191 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8E3A5C0C221B66F0006BF191 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E3A5C12221B67FF006BF191 /* TodoListViewControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewControllerTableViewController.swift; sourceTree = "<group>"; };
 		8E3A5C18221B7D5D006BF191 /* TableViewForTodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewForTodoList.swift; sourceTree = "<group>"; };
+		8E3A5C1A221B9C75006BF191 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				8E3A5C0C221B66F0006BF191 /* Info.plist */,
 				8E3A5C12221B67FF006BF191 /* TodoListViewControllerTableViewController.swift */,
 				8E3A5C18221B7D5D006BF191 /* TableViewForTodoList.swift */,
+				8E3A5C1A221B9C75006BF191 /* Item.swift */,
 			);
 			path = Todoey;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E3A5C1B221B9C75006BF191 /* Item.swift in Sources */,
 				8E3A5C19221B7D5D006BF191 /* TableViewForTodoList.swift in Sources */,
 				8E3A5C13221B67FF006BF191 /* TodoListViewControllerTableViewController.swift in Sources */,
 				8E3A5C01221B66EF006BF191 /* AppDelegate.swift in Sources */,
