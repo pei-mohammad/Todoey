@@ -10,10 +10,17 @@ import UIKit
 
 class TodoListViewControllerTableViewController: UITableViewController {
     
-    var itemsArray = ["Find Mike", "Buy Eggos", "Destroy the World"]
+    var itemsArray: [String]!
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
+            itemsArray = items
+        } else {
+            itemsArray = [String]()
+        }
 
         // Uncomment the following line to preserve selection between presentations
 //         self.clearsSelectionOnViewWillAppear = false
@@ -108,6 +115,7 @@ class TodoListViewControllerTableViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let newItemAction = UIAlertAction(title: "Add Item", style: .default) { (action) in
             self.itemsArray.append(alertTextField!.text!)
+            self.defaults.set(self.itemsArray, forKey: "TodoListArray")
             self.tableView.insertRows(at: [IndexPath(row: self.itemsArray.count - 1, section: 0)], with: UITableView.RowAnimation.left)
         }
         
