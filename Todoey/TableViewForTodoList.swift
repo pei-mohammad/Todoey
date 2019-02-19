@@ -50,10 +50,12 @@ class TableViewForTodoList: UITableView {
                 frame.origin.y = self.frame.size.width - values[0]["y"]!
                 print(self.frame.size.height)
                 cell.frame = frame
+                let duration = 0.4
+                let partialDuration = duration / 91
                 
-                UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: .calculationModePaced, animations: {
+                UIView.animateKeyframes(withDuration: duration, delay: 0, options: .calculationModePaced, animations: {
                     for n in 0...91 {
-                        UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.4 / 91, animations: {
+                        UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: partialDuration, animations: {
                             cell.frame = frame;
                             frame.origin.x = values[n]["x"]!
                             frame.origin.y = self.frame.size.width + originY - values[n]["y"]!
