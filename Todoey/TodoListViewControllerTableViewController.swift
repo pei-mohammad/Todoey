@@ -47,6 +47,10 @@ class TodoListViewControllerTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -94,6 +98,7 @@ class TodoListViewControllerTableViewController: UITableViewController {
     */
     
     
+    
     // MARK: - Add New Items
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -103,7 +108,7 @@ class TodoListViewControllerTableViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let newItemAction = UIAlertAction(title: "Add Item", style: .default) { (action) in
             self.itemsArray.append(alertTextField!.text!)
-            self.tableView.insertRows(at: [IndexPath(row: self.itemsArray.count - 1, section: 0)], with: UITableView.RowAnimation.right)
+            self.tableView.insertRows(at: [IndexPath(row: self.itemsArray.count - 1, section: 0)], with: UITableView.RowAnimation.left)
         }
         
         
