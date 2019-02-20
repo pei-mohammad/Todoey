@@ -48,7 +48,6 @@ class TableViewForTodoList: UITableView {
 
                 frame.origin.x = values[0]["x"]!
                 frame.origin.y = self.frame.size.width - values[0]["y"]!
-                print(self.frame.size.height)
                 cell.frame = frame
                 let duration = 0.4
                 let partialDuration = duration / 91
