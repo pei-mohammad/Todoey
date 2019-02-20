@@ -28,9 +28,10 @@ class TodoListViewControllerTableViewController: UITableViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        let view = UIView(frame: CGRect(x: 0, y: searchBar.frame.height, width: tableView.frame.width, height: 5))
+        let view = UIView(frame: CGRect(x: 0, y: searchBar.frame.height, width: tableView.frame.height, height: 5))
         view.backgroundColor = navigationController?.navigationBar.barTintColor
         searchBar.addSubview(view)
+        searchBar.tintColor = navigationController?.navigationBar.barTintColor
         
         tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 1)
         tableView.tableFooterView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)))
